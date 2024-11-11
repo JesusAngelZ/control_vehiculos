@@ -1,0 +1,84 @@
+.pagina-principal-container {
+    display: flex; /* Flexbox para alinear horizontalmente en pantallas grandes */
+    justify-content: center;
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px;
+    flex-wrap: wrap; /* Para que las tarjetas puedan bajar de línea en pantallas pequeñas */
+  }
+
+  .pagina-principal .card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px; /* Tamaño de la tarjeta para pantallas grandes */
+    flex: 1 1 300px; /* Las tarjetas ocuparán al menos 300px y crecerán según sea necesario */
+  }
+
+  .pagina-principal .header {
+    background-color: #42a5f5;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pagina-principal .header h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+
+  .pagina-principal .header .difficulty {
+    font-size: 40px;
+    color: white;
+  }
+
+  .pagina-principal .content {
+    padding: 20px;
+  }
+
+  .pagina-principal .content h2 {
+    color: #42a5f5;
+    margin-top: 0;
+  }
+
+  .pagina-principal .content p {
+    line-height: 1.6;
+  }
+
+  .pagina-principal .button {
+    background-color: #42a5f5;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+  }
+
+  .pagina-principal .button:hover {
+    background-color: #2196f3;
+  }
+
+  /* Ajustes para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .pagina-principal-container {
+      flex-direction: column; /* Apilar las tarjetas verticalmente */
+      gap: 10px; /* Espacio más pequeño entre las tarjetas en pantallas pequeñas */
+    }
+
+    .pagina-principal .card {
+      width: 100%; /* Ocupar todo el ancho disponible en pantallas pequeñas */
+      max-width: 100%; /* Asegurarse de que no exceda el ancho del contenedor */
+    }
+
+    .pagina-principal .header {
+      padding: 15px; /* Ajustar el padding para pantallas más pequeñas */
+    }
+
+    .pagina-principal .button {
+      padding: 10px 15px; /* Botones más pequeños en pantallas móviles */
+    }
+  }
