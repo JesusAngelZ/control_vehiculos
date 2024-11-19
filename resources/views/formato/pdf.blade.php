@@ -213,10 +213,10 @@
 
             <div class="row">
                 <label>Motivo de la solicitud:</label>
-                <span>Desconocido</span>
+                <span>{{ $solicitud->motivo }}</span>
 
                 <label style="margin-left: 12px;">Oficio de comisión:</label>
-                <span>Desconocido</span>
+                <span>{{ $solicitud->oficio_comision }}</span>
             </div>
 
 
