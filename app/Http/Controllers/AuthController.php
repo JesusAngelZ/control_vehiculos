@@ -142,8 +142,9 @@ public function logout()
         // Validar la entrada
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:50',
-            'email' => 'required|string|email|max:50|unique:users',
+            'email' => 'required|string|email|max:50|unique:users|regex:/^[a-zA-Z0-9._%+-]+@utj\.edu\.mx$/',
             'password' => 'required|string|min:8|confirmed',
+            'profession' => 'required|string|max:50',
         ]);
 
         // Si la validación falla, devolver errores de validación
@@ -159,6 +160,7 @@ public function logout()
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'profession' => $request->profession,
             ]);
 
             // Iniciar sesión automáticamente después del registro

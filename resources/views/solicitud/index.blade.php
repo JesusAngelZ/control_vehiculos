@@ -53,7 +53,6 @@
 
                     <h2>Documentación</h2>
                     <p><strong>Tarjeta de circulación:</strong> <span id="car-make">{{ $documentacion->tarjeta_circulacion }}</span></p>
-                    <p><strong>Calcomanía de seguro:</strong> <span id="car-model">{{ $documentacion->calcomonia_seguro }}</span></p>
                     <p><strong>Póliza de seguro:</strong> <span id="car-plate">{{ $documentacion->poliza_seguro }}</span></p>
 
                     <!-- Formulario para solicitar -->

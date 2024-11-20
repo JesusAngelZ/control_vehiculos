@@ -58,7 +58,6 @@
 
                     <h2>Documentación</h2>
                     <p><strong>Tarjeta de circulación:</strong> <span id="car-make">{{ $documentacion->tarjeta_circulacion }}</span></p>
-                    <p><strong>Calcomanía de seguro:</strong> <span id="car-model">{{ $documentacion->calcomonia_seguro }}</span></p>
                     <p><strong>Póliza de seguro:</strong> <span id="car-plate">{{ $documentacion->poliza_seguro }}</span></p>
 
                     <br>
@@ -112,7 +111,7 @@
                                         <img src="{{ asset('images/inicial.png') }}" alt="Combustible inicial" class="img-fluid mx-auto d-block" style="max-width: 55%;">
                                     </div>
                                     <div class="col-md-6"> <!-- Columna para el input -->
-                                        <input type="number" name="combustible_inicial" class="form-control" value="{{ old('combustible_inicial', $datos->combustible_inicial) }}" required>
+                                        <input type="text" name="combustible_inicial" class="form-control" value="{{ old('combustible_inicial', $datos->combustible_inicial) }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -142,15 +141,12 @@
                                         <img src="{{ asset('images/final.png') }}" alt="Combustible final" class="img-fluid mx-auto d-block" style="max-width: 75%;">
                                     </div>
                                     <div class="col-md-6"> <!-- Columna para el input -->
-                                        <input type="number" name="combustible_final" class="form-control" value="{{ old('combustible_final', $datos->combustible_final) }}" required>
+                                        <input type="text" name="combustible_final" class="form-control" value="{{ old('combustible_final', $datos->combustible_final) }}" required>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="estado_vehiculo_foto">Toma de fotografía del vehículo</label>
-                                <input type="file" class="form-control" name="estado_vehiculo_foto" accept="image/*" required />
-                            </div>
+
 
                         @endif
                         <br>

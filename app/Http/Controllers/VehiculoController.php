@@ -8,6 +8,7 @@ use App\Models\Solicitud;
 use App\Models\Solicitud_utj;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -53,7 +54,6 @@ class VehiculoController extends Controller
             'Cilindros' => 'required|integer|min:1|max:20',
             'vehiculoFoto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'tarjeta_circulacion' => 'required|string|max:10',
-            'calcomonia_seguro' => 'required|string|max:10',
             'poliza_seguro' => 'required|string|max:10',
         ]);
 
@@ -80,7 +80,6 @@ class VehiculoController extends Controller
         Documentacion_vehiculo::create([
             'id_auto' => $auto->id,
             'tarjeta_circulacion' => $validatedData['tarjeta_circulacion'],
-            'calcomonia_seguro' => $validatedData['calcomonia_seguro'],
             'poliza_seguro' => $validatedData['poliza_seguro'],
         ]);
 
@@ -261,7 +260,6 @@ public function update(Request $request, string $id)
         'Cilindros' => 'required|integer|min:1|max:20',
         'vehiculoFoto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         'tarjeta_circulacion' => 'required|string|max:10',
-        'calcomonia_seguro' => 'required|string|max:10',
         'poliza_seguro' => 'required|string|max:10',
     ]);
 
@@ -284,12 +282,13 @@ public function update(Request $request, string $id)
     // Verificar si existe la documentación para el vehículo antes de actualizar
     if ($documentacion) {
         $documentacion->tarjeta_circulacion = $validatedData['tarjeta_circulacion'];
-        $documentacion->calcomonia_seguro = $validatedData['calcomonia_seguro'];
         $documentacion->poliza_seguro = $validatedData['poliza_seguro'];
         $documentacion->update(); // Guarda los cambios en Documentacion_vehiculo
     }
 
-    return redirect()->route('auto')->with('success', 'Vehículo actualizado exitosamente.');
+    return redirect()->route('auto', ['alert' => 'success', 'message' => 'Vehículo actualizado exitosamente']);
+
+   // return redirect()->route('auto')->with('success', 'Vehículo actualizado exitosamente.');
 }
 
 
@@ -302,29 +301,25 @@ public function update(Request $request, string $id)
 
      public function destroy(string $id)
      {
-         // Encuentra el vehículo por su ID
          $auto = Auto::find($id);
-
-         // Verifica si el auto tiene registros en solicitudes_utj
          $existeSolicitud = Solicitud_utj::where('id_auto', $id)->exists();
 
          if ($existeSolicitud) {
-             // Si existen solicitudes, redirige con un mensaje de error
-             return redirect()->route('auto')->with('error', 'No es posible eliminar el vehículo porque tiene solicitudes asociadas.');
+             // Redirige con parámetros en la URL
+             return redirect()->route('auto', ['alert' => 'error', 'message' => 'No es posible eliminar el vehículo porque tiene solicitudes asociadas.']);
          }
 
          if ($auto) {
-             // Eliminar documentación relacionada
              Documentacion_vehiculo::where('id_auto', $id)->delete();
-
-             // Eliminar el vehículo
              $auto->delete();
-
-             return redirect()->route('auto')->with('success', 'Vehículo eliminado exitosamente.');
+             // Redirige con parámetros en la URL
+             return redirect()->route('auto', ['alert' => 'success', 'message' => 'Vehículo eliminado exitosamente.']);
          }
 
-         return redirect()->route('auto')->with('error', 'Vehículo no encontrado.');
+         // Redirige con parámetros en la URL
+         return redirect()->route('auto', ['alert' => 'error', 'message' => 'Vehículo no encontrado.']);
      }
+
 
 
 

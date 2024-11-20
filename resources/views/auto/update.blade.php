@@ -70,11 +70,6 @@
                             title="Debe contener entre 1 y 8 dígitos"  required value="{{ old('tarjeta_circulacion', $documentacion->tarjeta_circulacion) }}" />
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Calcomanía de seguro"
-                            name="calcomonia_seguro" minlength="5" maxlength="8"
-                            title="Debe contener entre 5 y 8 dígitos" required value="{{ old('calcomonia_seguro', $documentacion->calcomonia_seguro) }}" />
-                        </div>
-                        <div class="mb-3">
                             <input type="text" class="form-control" placeholder="Póliza de seguro"
                             name="poliza_seguro" minlength="8" maxlength="10"
                             title="Debe contener entre 8 y 10 dígitos" required value="{{ old('poliza_seguro', $documentacion->poliza_seguro) }}" />

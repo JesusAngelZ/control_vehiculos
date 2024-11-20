@@ -29,13 +29,47 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.html5.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.print.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
 <body>
 
+    <script>
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const alertType = urlParams.get('alert');
+            const alertMessage = urlParams.get('message');
+
+            if (alertType && alertMessage) {
+                Swal.fire({
+                    icon: alertType, // 'success' o 'error'
+                    title: alertType === 'success' ? '¡Éxito!' : '¡Error!',
+                    text: alertMessage
+                });
+            }
+        });
+    </script>
+
+
+
+
     <header style="padding: 40px">
         @include('menu.menu') {{-- Incluir el menú aquí --}}
     </header>
+
+    <!-- Mensajes de éxito o error -->
+<div class="container mt-4">
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @elseif(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+</div>
 
 
     <section class="section bg-gradient-animated text-center" style="background-color: #333; color: white; padding: 30px 0;">
@@ -188,7 +222,6 @@
         generateQRCode();
     });
 </script>
-
 
 
 

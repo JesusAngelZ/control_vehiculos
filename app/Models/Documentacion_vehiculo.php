@@ -12,7 +12,6 @@ class Documentacion_vehiculo extends Model
 
     protected $fillable = [
         'tarjeta_circulacion',
-        'calcomonia_seguro',
         'poliza_seguro',
         'id_auto',
     ];

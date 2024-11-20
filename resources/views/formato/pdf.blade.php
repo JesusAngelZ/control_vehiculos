@@ -426,7 +426,10 @@
             <h2 class="section-title">Estado de carrocería de vehículo</h2>
 
             <center>
-                <img class="img-responsive" src="{{ $solicitud->estado_vehiculo_foto }}" style="max-width: 200px; height: auto;">
+                <img class="img-responsive" src="images/croquis_auto.png"  style="max-width: 200px; height: auto;">
+            </center>
+            <center>
+                <span>En desarrollo...</span>
             </center>
 
 

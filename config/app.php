@@ -3,6 +3,8 @@
 return [
 
     'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+    'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

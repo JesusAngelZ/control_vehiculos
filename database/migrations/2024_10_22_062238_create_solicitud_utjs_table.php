@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('motivo');
             $table->string('oficio_comision')->nullable();
             $table->string('estado_vehiculo');
-            $table->longText('estado_vehiculo_foto')->nullable();
             $table->foreignId('id_usuario')->constrained('users');
             $table->foreignId('id_auto')->constrained('autos');
 

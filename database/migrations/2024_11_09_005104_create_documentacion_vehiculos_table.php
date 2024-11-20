@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_auto')->constrained('autos');
             $table->string('tarjeta_circulacion')->nullable();
-            $table->string('calcomonia_seguro')->nullable();
             $table->string('poliza_seguro')->nullable();
             $table->timestamps();
         });

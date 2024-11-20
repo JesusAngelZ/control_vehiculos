@@ -101,7 +101,10 @@ public function verificacion($id)
         return view('solicitud.formulario', compact('vehiculo', 'usuario', 'profession', 'datos','documentacion'));
     } else {
         // Si no se cumple la verificación, redirigir con un mensaje de error
-        return redirect()->back()->with('error', 'No se puede acceder a esta solicitud porque ya tiene fechas de salida o regreso.');
+      //  return redirect()->back()->with('error', 'No se puede acceder a esta solicitud porque ya tiene fechas de salida o regreso.');
+
+      return redirect()->route('principal', ['alert' => 'error', 'message' => 'No se puede acceder a esta solicitud porque ya tiene fechas de salida o regreso.']);
+
     }
 }
 
@@ -215,13 +218,13 @@ public function verificacion($id)
         try {
             $validatedData = $request->validate([
                 'kilometraje_inicial' => 'required_if:estado_vehiculo,Disponible|integer|min:0',
-                'combustible_inicial' => 'required_if:estado_vehiculo,Disponible|integer|min:0',
+                'combustible_inicial' => 'required_if:estado_vehiculo,Disponible|string|min:0',
                 'fecha_salida' => 'required_if:estado_vehiculo,Disponible|date',
                 'fecha_regreso' => 'required_if:estado_vehiculo,Usando|date',
                 'motivo' => 'required_if:estado_vehiculo,Usando|string|max:255',
                 'oficio_comision' => 'nullable|string|max:255',
                 'kilometraje_final' => 'required_if:estado_vehiculo,Usando|integer|min:0',
-                'combustible_final' => 'required_if:estado_vehiculo,Usando|integer|min:0',
+                'combustible_final' => 'required_if:estado_vehiculo,Usando|string|min:0',
                 'estado_vehiculo_foto' => 'required_if:estado_vehiculo,Usando|image|mimes:jpeg,png,jpg|max:2048',
             ]);
         } catch (\Exception $e) {

@@ -69,11 +69,7 @@
                             name="tarjeta_circulacion"  minlength="1" maxlength="8"
                             title="Debe contener entre 1 y 8 dígitos" required />
                         </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Calcomanía de seguro"
-                            name="calcomonia_seguro" minlength="5" maxlength="8"
-                            title="Debe contener entre 5 y 8 dígitos" required />
-                        </div>
+
                         <div class="mb-3">
                             <input type="text" class="form-control" placeholder="Póliza de seguro"
                             name="poliza_seguro" minlength="8" maxlength="10"

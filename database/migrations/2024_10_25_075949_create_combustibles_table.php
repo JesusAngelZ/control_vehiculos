@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_auto')->constrained('autos');
             $table->foreignId('id_solicitud')->constrained('solicitud_utjs');
-            $table->integer('combustible_inicial')->nullable();
-            $table->integer('combustible_salida')->nullable();
+            $table->string('combustible_inicial')->nullable();
+            $table->string('combustible_salida')->nullable();
             $table->timestamps();
         });
     }

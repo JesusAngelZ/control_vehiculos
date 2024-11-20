@@ -6,4 +6,5 @@ return [
     App\Providers\JetstreamServiceProvider::class,
     Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
     SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+    RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 ];

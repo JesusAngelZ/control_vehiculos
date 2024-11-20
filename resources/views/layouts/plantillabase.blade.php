@@ -76,6 +76,21 @@
                 <input type="email" name="email" placeholder="Correo electrónico" required />
                 <input type="password" name="password" placeholder="Contraseña" required />
                 <input type="password" name="password_confirmation" placeholder="Confirmar contraseña" required />
+
+                <div style="margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+                    <p style="margin-bottom: 5px; font-weight: bold; color: #333;">Tipo de usuario:</p>
+                    <center>
+                        <!-- Radio buttons dentro de un mismo grupo -->
+                        <label style="display: inline-block; margin-right: 15px; cursor: pointer; font-size: 14px; color: #555;">
+                            <input type="radio" name="profession" value="gd" required style="margin-right: 5px;" /> Guardia
+                        </label>
+                        <label style="display: inline-block; cursor: pointer; font-size: 14px; color: #555;">
+                            <input type="radio" name="profession" value="tb" required style="margin-right: 5px;" /> Trabajador
+                        </label>
+                    </center>
+                </div>
+
+
                 <button type="submit">Registrarse</button>
                 <!-- Mensaje de error -->
                 <ul id="error-message_form" style="list-style-type: disc; padding-left: 15px; margin-top: 10px; display: none;"></ul>

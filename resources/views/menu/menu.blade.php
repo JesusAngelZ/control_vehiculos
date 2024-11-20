@@ -24,7 +24,11 @@
     <header class="header">
         <div class="container">
             <nav class="navbar">
-                <h1><a href="{{ route('principal') }}" class="brand">UTJ</a></h1>
+                <img
+                    class="img-responsive"
+                    src="{{asset('images/Logo-utj.png')}}"
+                    alt="Logo UTJ"
+                    style="display: block; margin: 0 auto; max-width: 250px; height: auto;">
 
                 <!-- Mostrar el rol del usuario -->
                 <div class="user-role">

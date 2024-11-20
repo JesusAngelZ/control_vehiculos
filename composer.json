@@ -14,6 +14,7 @@
         "laravel/ui": "^4.5",
         "livewire/livewire": "^3.0",
         "php-open-source-saver/jwt-auth": "^2.3",
+        "realrashid/sweet-alert": "^7.2",
         "simplesoftwareio/simple-qrcode": "^4.0",
         "tymon/jwt-auth": "^2.1"
     },

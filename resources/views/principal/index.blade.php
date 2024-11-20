@@ -6,6 +6,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://unpkg.com/html5-qrcode/html5-qrcode.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <title>Principal</title>
     <link href="{{ asset('css/principal.css') }}" rel="stylesheet">
 
@@ -19,6 +23,29 @@
     </style>
   </head>
   <body>
+
+
+
+    <script>
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const alertType = urlParams.get('alert');
+            const alertMessage = urlParams.get('message');
+
+            if (alertType && alertMessage) {
+                Swal.fire({
+                    icon: alertType, // 'success' o 'error'
+                    title: alertType === 'success' ? '¡Éxito!' : '¡Error!',
+                    text: alertMessage
+                });
+            }
+        });
+    </script>
+
+
+
+
+
     <header style="padding: 40px">
       @include('menu.menu')
     </header>
@@ -110,74 +137,6 @@
 
 
       </div>
-      <!--
-      <script>
-                let html5QrcodeScanner;
-                let isScanning = false;
-                let hasScanned = false; // Bandera para evitar escaneos múltiples
-
-                function onScanSuccess(decodedText, decodedResult) {
-                if (hasScanned) return; // Si ya se ha escaneado, no hacer nada más
-
-                console.log(`Scan result: ${decodedText}`, decodedResult);
-                hasScanned = true; // Marcar que ya se ha escaneado
-
-                // Suponiendo que el ID está al final de la cadena, puedes extraerlo
-                let vehicleId = decodedText.split('/').pop(); // Obtiene el último segmento de la URL
-
-                // Redirigir al usuario a la vista de detalles del vehículo
-                window.location.href = " url('api/auth/solicitud') }}/" + vehicleId;  // Redirige al controlador 'SolicitudController@show' para mostrar los datos
-
-                // Detener el escaneo después de redirigir
-                if (html5QrcodeScanner) {
-                    html5QrcodeScanner.clear().then(() => {
-                        console.log("Escaneo detenido.");
-                        isScanning = false; // Actualizar el estado
-                    }).catch(err => console.error("Error al detener el escáner: ", err));
-                }
-            }
-
-
-                function onScanError(errorMessage) {
-                    console.log(`Scan error: ${errorMessage}`);
-                }
-
-                document.getElementById("toggle-scanner-btn").addEventListener("click", function() {
-                    const readerElement = document.getElementById("reader");
-                    const button = document.getElementById("toggle-scanner-btn");
-
-                    if (isScanning) {
-                        // Detener el escaneo
-                        html5QrcodeScanner.clear().then(() => {
-                            console.log("Escaneo detenido.");
-                            readerElement.style.display = "none";
-                            button.textContent = "Empezar";
-                            isScanning = false;
-                            hasScanned = false; // Reiniciar la bandera al detener
-                        }).catch(err => console.error("Error al detener el escáner: ", err));
-                    } else {
-                        // Iniciar el escaneo
-                        readerElement.style.display = "block";
-
-                        if (!html5QrcodeScanner) {
-                            html5QrcodeScanner = new Html5QrcodeScanner(
-                                "reader",
-                                {
-                                    fps: 10,
-                                    qrbox: function(viewfinderWidth, viewfinderHeight) {
-                                        const minDimension = Math.min(viewfinderWidth, viewfinderHeight);
-                                        return { width: minDimension * 0.7, height: minDimension * 0.7 };
-                                    },
-                                    aspectRatio: 1.3333
-                                }
-                            );
-                        }
-                        html5QrcodeScanner.render(onScanSuccess, onScanError);
-                        button.textContent = "Detener";
-                        isScanning = true;
-                    }
-                });
-    </script> -->
 
     <script>
         let profession = "{{ Auth::user()->profession }}"; // Pasamos la profesión al JavaScript
